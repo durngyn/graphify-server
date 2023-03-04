@@ -5,7 +5,7 @@ const authorizeController = require('../controllers/authorizeController')
 
 //Authorization endpoints for token exchange and logging in to Spotify
 
-router.get("/authorize", authorizeController.testController)
+router.get("/authorize", authorizeController.createRedirect)
 
 router.post("/exchange-code", (req, res) => {
     res.send("exchange code")
