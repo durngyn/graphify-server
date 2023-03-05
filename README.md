@@ -15,10 +15,11 @@ Backend to be used for **https://bchh325.github.io/spotify-distribution/**
 ## Completed Tasks
 * Authorization endpoint to redirect user to Spotify's authentication URL
 * State comparisons before/after redirect and obtained auth_code
-* Connected MongoDB for express-sessions and storage of session cookie on the client
+* Connected MongoDB for express-sessions
+* Successfully exchanged auth_code and verifiers and stored access/refresh tokens in session on MongoDB, client also successfully recieves httpOnly session cookie
 
 ## Planned Tasks (I always find something to add to this list)
 * BFF Proxy for OAuth Flow as described here (https://datatracker.ietf.org/doc/html/draft-ietf-oauth-browser-based-apps#name-backend-for-frontend-bff-pr)
-* Create controller function for requesting access tokens with auth_code and code_verifier
 * Create controller function for requesting resources from Spotify's Web API
 * Create controller function to handle refreshing access tokens
+* Revoke sessions based on synchronized MongoDB session document time-to-live (TTL) and session cookie age and revoke on user logout
