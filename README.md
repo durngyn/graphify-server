@@ -4,8 +4,8 @@ Repo for main website: **https://github.com/bchh325/spotify-distribution** <br>
 Backend to be used for **https://bchh325.github.io/spotify-distribution/**
 
 ## Technologies I'm planning to use
-* Node.js
-* Express
+* React
+* Express/Node.js (BFF Proxy / Auth Code Flow w/ PKCE)
 * Spotify Web API
 * Spotify Web Playback SDK
 * WebSockets (Socket.io)
