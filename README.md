@@ -1,5 +1,6 @@
 # graphify-server
 
+Repo for main website: **https://github.com/bchh325/spotify-distribution** <br>
 Backend to be used for **https://bchh325.github.io/spotify-distribution/**
 
 ## Technologies I'm planning to use
