@@ -7,8 +7,6 @@ const authorizeController = require('../controllers/authorizeController')
 
 router.get("/authorize", authorizeController.createRedirect)
 
-router.post("/exchange-code", (req, res) => {
-    res.send("exchange code")
-})
+router.post("/exchange-code", authorizeController.exchangeCode)
 
 module.exports = router;
