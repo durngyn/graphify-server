@@ -7,7 +7,7 @@ const encodeIdSecret = require('../helpers/encodeIdSecret')
 const env = process.env
 
 const createRedirect = (req, res) => {
-    const scope = 'user-read-private user-read-email';
+    const scope = 'playlist-read-private streaming';
     const params = req.query
 
     const route = "/authorize"
@@ -30,7 +30,7 @@ const exchangeCode = (req, res) => {
     const route = "/api/token"
     const data = req.body
 
-    options = {
+    const options = {
         method: 'post',
         url: env.SPOTIFY_ACCOUNTS_URI + route,
         headers: {
@@ -56,7 +56,7 @@ const exchangeCode = (req, res) => {
                 if (err) {
                     console.log(err)
                 } else {
-                    res.send(req.session)
+                    res.send("success")
                 }
             })
         })
