@@ -23,3 +23,4 @@ Backend to be used for **https://bchh325.github.io/spotify-distribution/**
 * BFF Proxy for OAuth Flow as described here (https://datatracker.ietf.org/doc/html/draft-ietf-oauth-browser-based-apps#name-backend-for-frontend-bff-pr)
 * Create controller function to handle refreshing access tokens
 * Revoke sessions based on synchronized MongoDB session document time-to-live (TTL) and session cookie age or revoke on logout
+* Create controller function to request batches of songs when playlist exceeds 100 songs
