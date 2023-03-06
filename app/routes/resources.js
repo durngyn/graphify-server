@@ -7,8 +7,6 @@ const resourcesController = require('../controllers/resourcesController')
 
 router.get("/playlists", resourcesController.getPlaylists)
 
-router.post("/temp2", (req, res) => {
-    res.send("temp2")
-})
+router.get("/playlist-items", resourcesController.getSongsFromPlaylist)
 
 module.exports = router;
