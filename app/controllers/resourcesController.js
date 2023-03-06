@@ -11,6 +11,9 @@ const getPlaylists = (req, res) => {
         headers: {
             "Content-Type": "application/json",
             "Authorization": "Bearer " + req.session.access_token
+        }, 
+        params: {
+            limit: 50
         }
     }
 
@@ -57,7 +60,12 @@ const getSongsFromPlaylist = (req, res) => {
         })
 }
 
+const getMultipleSongDetails = (req, res) => {
+    
+}
+
 module.exports = {
     getPlaylists,
-    getSongsFromPlaylist
+    getSongsFromPlaylist,
+    getMultipleSongDetails
 }
