@@ -2,10 +2,10 @@ const axios = require('axios');
 
 const env = process.env
 
-const getPlaylists = (req, res) => {
+const getPlaylists = async (req, res) => {
     const route = "/v1/me/playlists"
 
-    const options = {
+    let options = {
         method: 'get',
         url: env.SPOTIFY_WEB_API_URI + route,
         headers: {
@@ -13,24 +13,28 @@ const getPlaylists = (req, res) => {
             "Authorization": "Bearer " + req.session.access_token
         }, 
         params: {
-            limit: 50
+            limit: 50,
+            offset: 0
         }
     }
 
-    axios(options)
-        .then(data => {
-            console.log("Data retrieved")
-            console.log(data.data.items)
-            res.send(data.data.items)
-        })
-        .catch(err => {
-            console.log("Error retreived")
-            console.log(err)
-            res.send("Error with request to Spotify API")
-        })
+    let allPlaylists = null
+    let playlists = await axios(options)
+
+    allPlaylists = playlists.data.items
+    
+    while (playlists.data.next !== null) {
+        const params = new URL(playlists.data.next)
+        options.params.offset = params.searchParams.get("offset")
+
+        playlists = await axios(options)
+        allPlaylists = allPlaylists.concat(playlists.data.items)
+    }    
+
+    res.send(allPlaylists)
 }
 
-const getSongsFromPlaylist = (req, res) => {
+const getSongsFromPlaylist = async (req, res) => {
     const params = req.query
 
     console.log(params)
@@ -48,16 +52,20 @@ const getSongsFromPlaylist = (req, res) => {
         }
     }
 
-    axios(options)
-        .then(data => {
-            console.log("Data retrieved")
-            res.send(data.data)
-        })
-        .catch(err => {
-            console.log("Error retreived")
-            console.log(err)
-            res.send("Error with request to Spotify API")
-        })
+    let allSongs = null
+    let songs = await axios(options)
+
+    allSongs = songs.data.items
+    
+    while (songs.data.next !== null) {
+        const params = new URL(songs.data.next)
+        options.params.offset = params.searchParams.get("offset")
+
+        songs = await axios(options)
+        allSongs = allSongs.concat(songs.data.items)
+    }    
+    
+    res.send(allSongs)
 }
 
 const getMultipleSongDetails = (req, res) => {
