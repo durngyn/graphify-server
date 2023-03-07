@@ -9,6 +9,6 @@ router.get("/playlists", resourcesController.getPlaylists)
 
 router.get("/playlist-items", resourcesController.getSongsFromPlaylist)
 
-router.get("/multiple-tracks", resourcesController.getMultipleSongDetails)
+router.post("/multiple-artists", resourcesController.getMultipleArtists)
 
 module.exports = router;

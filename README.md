@@ -19,7 +19,8 @@ Backend to be used for **https://bchh325.github.io/spotify-distribution/**
 * Successfully exchanged auth_code and verifiers and stored access/refresh tokens in session on MongoDB, client also successfully recieves httpOnly session cookie
 * Created controller function for requesting playlists from Spotify's Web API
 * Created controller function for requesting list of songs given a playlist id
-* Updated playlist and songs requests to gather more data past API limits per request (ex. num_playlists > 50 or num_songs in a playlist > 100)
+* Updated playlist, songs, artists requests to gather more data past API limits per request (ex. num_playlists > 50 or num_songs in a playlist > 100)
+* Changed controller func to get artists instead of tracks since tracks do not have a genre in the response despite Spotify's Web API stating that it does
 
 ## Planned Tasks (I always find something to add to this list)
 * BFF Proxy for OAuth Flow as described here (https://datatracker.ietf.org/doc/html/draft-ietf-oauth-browser-based-apps#name-backend-for-frontend-bff-pr)
