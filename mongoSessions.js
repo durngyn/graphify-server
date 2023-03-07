@@ -10,7 +10,8 @@ const sessionExport = session({
     secret: 'SECRET KEY',
     resave: false,
     store: MongoStore.create({
-        mongoUrl: `mongodb+srv://graphifypassword:${process.env.MONGO_PASSWORD}@graphify.71ege8f.mongodb.net/graphify-db?retryWrites=true&w=majority`, //YOUR MONGODB URL
+        
+        mongoUrl: `mongodb+srv://phoga:${process.env.MONGO_PASSWORD}@cluster0.ixwcp5b.mongodb.net/?retryWrites=true&w=majority`, //YOUR MONGODB URL
         ttl: 3600,
         autoRemove: 'native',
         autoRemoveInterval: 2

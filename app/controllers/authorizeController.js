@@ -48,11 +48,16 @@ const exchangeCode = (req, res) => {
     axios(options)
         .then(data => {
             const tokens = data.data
+            console.log("dumma")
+            console.log(req.session)
             console.log(tokens)
             req.session.access_token = tokens.access_token
             req.session.refresh_token = tokens.refresh_token
             req.session.save(err => {
                 if (err) {
+                    console.log("")
+                    console.log("Error Saving Session")
+                    console.log("")
                     console.log(err)
                 } else {
                     res.send("success")
