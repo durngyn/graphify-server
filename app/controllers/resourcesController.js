@@ -64,16 +64,42 @@ const getSongsFromPlaylist = async (req, res) => {
         songs = await axios(options)
         allSongs = allSongs.concat(songs.data.items)
     }    
-    
+
     res.send(allSongs)
 }
 
-const getMultipleSongDetails = (req, res) => {
-    
+const getMultipleArtists = async (req, res) => {
+    const batches = req.body.batches
+    const route = "/v1/artists"
+
+    let options = {
+        method: 'get',
+        url: env.SPOTIFY_WEB_API_URI + route,
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + req.session.access_token
+        },
+        params: {
+        }
+    }
+
+    let allArtists = []
+
+    for (let i = 0; i < batches.length; i++) {
+        console.log(`Batch ${i + 1}: ${(batches[i])} \n`)
+        options.params.ids = batches[i]
+
+        const batchRes = await axios(options)
+        console.log(batchRes.data)
+        
+        allArtists = allArtists.concat(batchRes.data.artists)
+    } 
+
+    res.send(allArtists)
 }
 
 module.exports = {
     getPlaylists,
     getSongsFromPlaylist,
-    getMultipleSongDetails
+    getMultipleArtists
 }
