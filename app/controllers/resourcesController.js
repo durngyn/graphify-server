@@ -19,7 +19,13 @@ const getPlaylists = async (req, res) => {
     }
 
     let allPlaylists = null
-    let playlists = await axios(options)
+    let playlists;
+
+    try {
+        playlists = await axios(options)
+    } catch (err) {
+        console.log(err)
+    }
 
     allPlaylists = playlists.data.items
     
@@ -53,7 +59,13 @@ const getSongsFromPlaylist = async (req, res) => {
     }
 
     let allSongs = null
-    let songs = await axios(options)
+    let songs;
+
+    try {
+        songs = await axios(options)
+    } catch (err) {
+        console.log(err)
+    }
 
     allSongs = songs.data.items
     
